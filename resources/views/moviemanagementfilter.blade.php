@@ -58,7 +58,7 @@
         <div class="col-3">
             <div class="card mt-4" style="width: auto">
                 <a href="/moviedetail/{{ $m->movie_id }}">
-                    <img class="card-img-top" src="{{ asset('Materials/Movies/' . $m->movie_id . '.png') }}" alt="Movie poster" width="300px" height="450px"/>
+                    <img class="card-img-managment" src="{{ asset('Materials/Movies/' . $m->movie_id . '.png') }}" alt="Movie poster" width="300px" height="450px"/>
                 </a>
                 <div class="card-body">
                     <h5 class="card-title">{{ $m->movie_name }}</h5>

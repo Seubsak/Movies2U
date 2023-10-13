@@ -46,11 +46,20 @@ Route::middleware([
 
 })->name('welcome');
     Route::post('/review',[MoviesController::class,'Addreview'])->name('Addreview');
-    Route::get('/delcomment/{Id}',[MoviesController::class,'Delcomment'])->name('Delcomment');
+    Route::post('/reviewUpdate',[MoviesController::class,'EditReview'])->name('reviewUpdate');
+    Route::get('/delcomment/{Id}',[MoviesController::class,'DelReview'])->name('DelReview');
+    Route::post('/reply',[MoviesController::class,'addReply'])->name('addReply');
+    Route::post('/replyUpdate',[MoviesController::class,'EditReply'])->name('replyUpdate');
+    Route::get('/delreply/{Id}',[MoviesController::class,'DelReply'])->name('DelReply');
+
     Route::middleware(['auth', 'admin:1'])->group(function () {
         Route::get('/addwatchlist/{movieId}', [MoviesController::class,'addwatchlist']);
         Route::get('/MyWatchlist', [MoviesController::class,'show_allwatchlist']);
         Route::get('/watchlist/delete/{id}', [MoviesController::class,'deletewatchlist']);
+        Route::get('/favpage', [MoviesController::class, 'Favpage'])->name('favorite');
+        Route::get('/addfav/{movieId}', [MoviesController::class, 'AddFav'])->name('addFav');
+        Route::get('/delfav/{movieId}', [MoviesController::class, 'delFav'])->name('delFav');
+        Route::get('/favpage', [MoviesController::class, 'like'])->name('likes');
     });
     Route::middleware(['auth', 'admin:2'])->group(function () {
         Route::get('/addUserForm',[AddUserController::class,'adduserform'])->name('adduserform');

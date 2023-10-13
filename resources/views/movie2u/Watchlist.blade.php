@@ -12,12 +12,11 @@
                             @if ( Auth::user()->roles == 1)
                             <a href="/moviedetail/{{ $miw->movie_id }}" class="btn detail-btn-primary mt-1" color="black">Details</a>
                             <a href="/watchlist/delete/{{ $miw->movie_id }}" class="btn delete-btn-primary mt-1" onclick="return confirm('Are you sure you want to delete this movie?')">Remove</a>
-
                             @endif
                         </div>
                     </div>
                     <div class="card-body mt-2">
-                        <h4 class="movie-title">{{ $miw->Movies_nam2e }}</h4>
+                        <h4 class="movie-title">{{ $miw->Movies_name }}</h4>
                     </div>
                 </div>
             @endforeach

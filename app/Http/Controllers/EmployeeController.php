@@ -117,7 +117,7 @@ class EmployeeController extends Controller
             else{
                 Movie_detail::where('emp_id', $request->id)
                 ->where('movie_id', $movie_id)
-                ->forcedelete();
+                ->delete();
             }
         }
 

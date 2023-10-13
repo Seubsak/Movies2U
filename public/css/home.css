@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Kodchasan:ital,wght@0,200;0,600;0,700;1,300;1,700&family=Monoton&family=Montserrat:wght@300&family=Prompt:wght@800&display=swap');
+*{
+    margin: 0;
+}
+.main{
+    min-height: 100vh;
+    width: 100%;
+    background-color: black;
+    background-image: url("/img/coke_gif.gif");
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: 60%;
+    color: white;
+    padding: 0 8%;
+}
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+.logo{
+    width: 400px;
+    margin-top: -2%;
+}
+nav ul li{
+    font-family: 'Prompt', sans-serif;
+    display: inline-block;
+    list-style-type: none;
+    margin: 10px;
+    margin-top: -2%;
+}
+nav ul li a{
+    color: white;
+    font-weight: bold;
+}
+.main h1{
+    font-family: 'Prompt', sans-serif;
+    font-size: 55px;
+    margin-top: 14%;
+}
+.main button{
+    padding: 10px;
+    border-radius: 10px;
+    color: red;
+    font-family: 'Prompt', sans-serif;
+    border: 2px solid red;
+    background-color: black;
+    cursor: pointer;
+    margin-top: 1%;
+}
+.start:hover{
+    background-color: rgb(221, 50, 50);
+    color: white;
+    border: 2px solid rgb(221, 50, 50);
+    transform: scale(1.2);
+    transition: 0.3s;
+    margin-left: 1%;
+}
+a li button:hover{
+    transform: scale(1.2);
+    transition: 0.2s;
+}
+.start{
+    width: 13%;
+    height: 10%;
+    font-size: 25px;
+}
+.gif{
+    width: 1000px;
+}
+section{
+    display: inline-block;
+    justify-content: space-between;
+}

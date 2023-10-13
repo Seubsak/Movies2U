@@ -1,5 +1,16 @@
 @extends('layouts.navbar')
 @section('content')
+@if(session('success'))
+    <script>
+        alert("{{ session('success') }}");
+    </script>
+@endif
+
+@if(session('alert'))
+    <script>
+        alert("{{ session('alert') }}");
+    </script>
+@endif
 <div class="container-fluid">
     <p class="title_category_Movies mt-3">Category Movies</p>
     <div class="row">
@@ -27,12 +38,13 @@
             </ul>
         </div>
         <div class="col-10">
-            <div class="row"> <!-- วนลูปแสดงหนังในตาราง movie -->
+            <div class="row"> <!-- วนลูปแสดงหนังในตาราง movie ทั้งหมด -->
             @foreach ($movie as $m)
                 <div class="col-3">
                     <div class="card mt-4" style="width: auto">
                         <a href="/moviedetail/{{ $m->movie_id }}">
-                            <img class="card-img-top" src="{{ asset('Materials/Movies/' . $m->movie_id . '.png') }}" alt="Movie poster" width="150px" height="350px"/>
+                            <img class="card-img-category" src="{{ asset('Materials/Movies/' . $m->movie_id . '.png') }}" alt="Movie poster" width="250px" height="350px"/>
+                            <a href="/addfav/{{ $m->movie_id }}" class="btn btn-link"><i class="bi bi-heart text-danger"></i>
                         </a>
                         <div class="card-body">
                             <h5 class="card-title  d-flex justify-content-between align-items-center">
@@ -43,15 +55,18 @@
                             </div>
                             <div class="mt-3">
                                 @guest
-                                    <a href="/moviedetail/{{ $m->movie_id }}" class="btn btn-warning" style="width: 48%;">Detail</a>
-                                    <a href="/addwatchlist/{{ $m->movie_id}}" class="btn btn-dark" style="width: 48%;"><i class="bi bi-plus-lg"></i> Watchlist</a>
+                                    <!-- ระดับผู้ที่ยังไม่ได้login -->
+                                    <a href="/moviedetail/{{ $m->movie_id }}" class="btn btn-warning" style="width: 100%;">Detail</a>
+                                    <a href="/addwatchlist/{{ $m->movie_id}}" class="btn btn-dark mt-2" style="width: 100%;"><i class="bi bi-plus-lg"></i> Watchlist</a>
                                     @else
+                                    <!-- ระดับ user -->
                                     @if( Auth::user()->roles  == 1)
-                                    <a href="/moviedetail/{{ $m->movie_id }}" class="btn btn-warning" style="width: 48%;">Detail</a>
-                                    <a href="/addwatchlist/{{ $m->movie_id}}" class="btn btn-dark" style="width: 48%;"><i class="bi bi-plus-lg"></i> Watchlist</a>
+                                    <a href="/moviedetail/{{ $m->movie_id }}" class="btn btn-warning" style="width: 100%;">Detail</a>
+                                    <a href="/addwatchlist/{{ $m->movie_id}}" class="btn btn-dark mt-2" style="width: 100%;"><i class="bi bi-plus-lg"></i> Watchlist</a>
+                                    <!-- ระดับ admin -->
                                     @elseif ( Auth::user()->roles  == 2 )
-                                    <a href="/moviemanagement/editForm/{{ $m->movie_id }}" class="btn btn-warning" style="width: 48%;">Edit</a>
-                                    <a href="/moviemanagement/delete/{{ $m->movie_id }}" class="btn btn-danger" style="width: 48%;" onclick="return confirm('Are you sure you want to delete this movie?')">Delete</a>
+                                    <a href="/moviemanagement/editForm/{{ $m->movie_id }}" class="btn btn-warning" style="width: 100%;">Edit</a>
+                                    <a href="/moviemanagement/delete/{{ $m->movie_id }}" class="btn btn-danger mt-2" style="width: 100%;" onclick="return confirm('Are you sure you want to delete this movie?')">Delete</a>
                                     @endif
                                 @endguest
                             </div>
